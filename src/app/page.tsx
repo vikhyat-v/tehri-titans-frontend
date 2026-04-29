@@ -1,190 +1,212 @@
-const navItems = [
-  "Home",
-  "Players",
-  "Sports",
-  "Academy",
-  "Equipment",
-  "Sponsors",
-  "About Us",
-  "Contact",
+import {
+  ArrowRight,
+  Award,
+  Brain,
+  Calendar,
+  Dumbbell,
+  MapPin,
+  Shield,
+  Sparkles,
+  Target,
+  Trophy,
+  Users,
+} from "lucide-react";
+
+const navItems = ["Home", "Players", "Sports", "Academy", "Equipment", "Sponsors", "About"];
+
+const focusAreas = [
+  { title: "Table Tennis", subtitle: "Compete, improve, achieve", icon: Trophy },
+  { title: "Carrom", subtitle: "Precision and strategy", icon: Target },
+  { title: "Chess", subtitle: "Think, plan, dominate", icon: Brain },
+  { title: "Athlete Support", subtitle: "Nutrition and recovery", icon: Shield },
 ];
 
-const featurePills = [
-  { title: "Table Tennis", subtitle: "Compete. Improve. Achieve." },
-  { title: "Carrom", subtitle: "Focus. Strategy. Fun." },
-  { title: "Chess", subtitle: "Think. Plan. Win." },
-  { title: "Athlete Support", subtitle: "Nutrition & Physio." },
-  { title: "AI in Sports", subtitle: "Analyze. Improve. Perform." },
+const players = [
+  { name: "Divyansh Srivastava", title: "National Rank #5", stat: "47 Wins" },
+  { name: "Jatin Pundir", title: "State Rank #1", stat: "31 Wins" },
+  { name: "Ananya Singh", title: "State Rank #3", stat: "29 Wins" },
 ];
 
-const playerCards = [
-  { name: "Divyansh Srivastava", sport: "Table Tennis", rank: "National Rank #5" },
-  { name: "Jatin Pundir", sport: "Table Tennis", rank: "State Rank #1" },
-  { name: "Ananya Singh", sport: "Table Tennis", rank: "State Rank #3" },
+const events = [
+  { name: "Uttarakhand Open", status: "Completed", date: "15 Feb 2026" },
+  { name: "Titans Training Camp", status: "Registration Open", date: "03 May 2026" },
+  { name: "State Chess League", status: "Coming Soon", date: "14 Jun 2026" },
 ];
 
-const sportCards = [
-  { title: "Table Tennis", details: "National & State Players", tag: "Upcoming Academy" },
-  { title: "Carrom", details: "Uttarakhand Tournament Conducted", tag: "Completed" },
-  { title: "Chess", details: "Uttarakhand Tournament Coming Soon", tag: "Join Waitlist" },
-];
+function Stat({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+      <p className="text-2xl font-bold text-white md:text-3xl">{value}</p>
+      <p className="text-sm text-slate-400">{label}</p>
+    </div>
+  );
+}
 
 export default function Home() {
   return (
-    <main className="mx-auto w-full max-w-[1300px] p-4 md:p-6">
-      <section className="rounded-[26px] border border-orange-500/20 bg-[#071326]/95 p-4 shadow-[0_20px_100px_rgba(0,0,0,0.5)] md:p-6">
-        <header className="mb-4 flex flex-wrap items-center gap-4 rounded-2xl border border-white/10 bg-[#08152a]/90 px-4 py-3 text-sm md:mb-6 md:px-6">
-          <div className="flex min-w-[180px] items-center gap-3">
-            <div className="grid h-10 w-10 place-items-center rounded-lg border border-orange-500/40 bg-[#0b1b32] text-sm font-bold text-orange-400">
+    <main className="mx-auto w-full max-w-[1250px] px-4 py-5 md:px-6 md:py-8">
+      <div className="rounded-[28px] border border-orange-400/20 bg-[#071226] p-4 shadow-[0_20px_80px_rgba(0,0,0,0.55)] md:p-6">
+        <header className="glass mb-6 flex flex-wrap items-center gap-4 rounded-2xl p-4 md:px-6">
+          <div className="flex items-center gap-3">
+            <div className="grid h-10 w-10 place-items-center rounded-lg border border-orange-400/50 bg-orange-500/15 text-sm font-bold text-orange-300">
               TT
             </div>
             <div>
-              <p className="font-display text-2xl leading-none tracking-wide text-orange-400">
-                TEHRI TITANS
-              </p>
-              <p className="text-xs text-slate-400">Live and Play with Passion.</p>
+              <p className="font-display text-2xl leading-none tracking-wide text-white">TEHRI TITANS</p>
+              <p className="text-xs text-slate-400">Live and Play with Passion</p>
             </div>
           </div>
-          <nav className="flex flex-1 flex-wrap justify-center gap-4 text-slate-300">
+          <nav className="mx-auto flex flex-wrap justify-center gap-5 text-sm text-slate-300">
             {navItems.map((item) => (
-              <a
-                key={item}
-                href="#"
-                className="transition hover:text-orange-400"
-              >
+              <a key={item} href="#" className="transition hover:text-orange-300">
                 {item}
               </a>
             ))}
           </nav>
-          <button className="rounded-full border border-orange-500/40 bg-gradient-to-r from-orange-500 to-amber-400 px-5 py-2 font-semibold text-slate-900 transition hover:brightness-110">
-            Join the Team
+          <button className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-orange-500 to-amber-300 px-4 py-2 font-semibold text-slate-900">
+            Join Team <ArrowRight size={16} />
           </button>
         </header>
 
-        <div className="grid gap-4 lg:grid-cols-[2fr_1fr]">
-          <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[#091730] via-[#091a36] to-[#07162f] p-6 md:p-8">
-            <div className="pointer-events-none absolute -right-12 top-8 h-64 w-64 rounded-full border border-orange-400/30 bg-orange-500/10 blur-sm" />
-            <div className="pointer-events-none absolute -left-10 bottom-0 h-40 w-40 rounded-full border border-blue-400/20 bg-blue-500/10 blur-sm" />
-            <p className="font-display text-6xl leading-none tracking-wide text-white md:text-7xl">
+        <section className="grid gap-4 lg:grid-cols-[1.85fr_1fr]">
+          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-[#0c1b35] via-[#0a1730] to-[#071226] p-7 md:p-10">
+            <div className="absolute -right-16 top-5 h-64 w-64 rounded-full border border-orange-300/25 bg-orange-400/10 blur-[2px]" />
+            <div className="absolute -left-10 -bottom-10 h-44 w-44 rounded-full border border-blue-300/15 bg-blue-400/10 blur-[2px]" />
+            <p className="font-display text-6xl leading-none tracking-wide text-white md:text-8xl">
               TEHRI <span className="text-gradient-orange">TITANS</span>
             </p>
-            <p className="mt-2 text-3xl italic text-slate-200">Live and Play with Passion.</p>
-            <p className="mt-4 max-w-xl text-slate-300">
-              A platform for sports, growth and community. Building talent,
-              promoting teamwork and supporting athletes on and off the field.
+            <p className="mt-3 text-2xl italic text-slate-200 md:text-3xl">Live and Play with Passion.</p>
+            <p className="mt-5 max-w-2xl text-slate-300">
+              Tehri Titans is a high-performance sports platform focused on talent growth, tournament exposure,
+              and holistic athlete development through coaching, analytics, and community support.
             </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <button className="rounded-lg bg-gradient-to-r from-orange-500 to-amber-400 px-5 py-2.5 font-semibold text-slate-900">
+            <div className="mt-7 flex flex-wrap gap-3">
+              <button className="rounded-xl bg-gradient-to-r from-orange-500 to-amber-300 px-5 py-2.5 font-semibold text-slate-900">
                 Meet Our Players
               </button>
-              <button className="rounded-lg border border-white/20 bg-white/5 px-5 py-2.5 text-slate-100">
+              <button className="rounded-xl border border-white/20 bg-white/5 px-5 py-2.5 text-slate-100 transition hover:bg-white/10">
                 Become a Sponsor
               </button>
             </div>
-            <div className="mt-8 grid gap-3 text-sm text-slate-300 sm:grid-cols-3">
-              <div className="rounded-xl border border-white/10 bg-white/5 p-3">125+ Players</div>
-              <div className="rounded-xl border border-white/10 bg-white/5 p-3">3 Sports</div>
-              <div className="rounded-xl border border-white/10 bg-white/5 p-3">5 States</div>
+            <div className="mt-7 grid gap-3 sm:grid-cols-3">
+              <Stat label="Athletes in Network" value="125+" />
+              <Stat label="Sports Disciplines" value="04" />
+              <Stat label="States Reached" value="05" />
             </div>
           </div>
 
-          <aside className="rounded-2xl border border-white/10 bg-[#0b1b32]/90 p-5">
-            <p className="text-xs uppercase tracking-widest text-orange-400">Live Match</p>
-            <p className="mt-2 text-sm text-slate-400">Uttarakhand League</p>
-            <div className="mt-4 rounded-xl border border-white/10 bg-[#09162a] p-4">
-              <p className="text-center text-3xl font-bold">2 - 1</p>
-              <p className="mt-1 text-center text-sm text-slate-400">Titans vs Warriors</p>
+          <aside className="rounded-3xl border border-white/10 bg-[#0b1831] p-5">
+            <div className="mb-4 flex items-center justify-between">
+              <p className="text-xs uppercase tracking-[0.2em] text-orange-300">Live Match</p>
+              <span className="rounded-full bg-orange-500/20 px-2 py-1 text-[10px] text-orange-200">68&apos;</span>
             </div>
-            <p className="mt-5 text-xs uppercase tracking-widest text-orange-400">This Month Impact</p>
+            <div className="rounded-2xl border border-white/10 bg-[#091427] p-4">
+              <p className="text-sm text-slate-400">Uttarakhand League</p>
+              <p className="mt-3 text-center text-4xl font-bold">2 - 1</p>
+              <p className="text-center text-sm text-slate-400">Titans vs Warriors</p>
+            </div>
+            <p className="mt-5 text-xs uppercase tracking-[0.2em] text-orange-300">Monthly Impact</p>
             <div className="mt-3 grid grid-cols-2 gap-3 text-sm">
-              <div className="rounded-lg border border-white/10 bg-white/5 p-3">₹2,30,000</div>
-              <div className="rounded-lg border border-white/10 bg-white/5 p-3">120+ Athletes</div>
-              <div className="rounded-lg border border-white/10 bg-white/5 p-3">18 Events</div>
-              <div className="rounded-lg border border-white/10 bg-white/5 p-3">2.5M+ Reach</div>
+              <div className="rounded-xl border border-white/10 bg-white/5 p-3">₹2,30,000+ Raised</div>
+              <div className="rounded-xl border border-white/10 bg-white/5 p-3">120+ Athletes</div>
+              <div className="rounded-xl border border-white/10 bg-white/5 p-3">18 Events</div>
+              <div className="rounded-xl border border-white/10 bg-white/5 p-3">2.5M Reach</div>
             </div>
           </aside>
-        </div>
+        </section>
 
-        <div className="mt-4 grid gap-3 md:grid-cols-5">
-          {featurePills.map((item) => (
-            <div
-              key={item.title}
-              className="rounded-xl border border-white/10 bg-[#0a1a32]/90 p-3"
-            >
-              <p className="font-semibold text-orange-300">{item.title}</p>
-              <p className="text-xs text-slate-400">{item.subtitle}</p>
-            </div>
+        <section className="mt-4 grid gap-3 md:grid-cols-4">
+          {focusAreas.map((item) => (
+            <article key={item.title} className="rounded-2xl border border-white/10 bg-[#0b1831] p-4">
+              <item.icon className="mb-3 text-orange-300" size={20} />
+              <p className="font-semibold text-white">{item.title}</p>
+              <p className="text-sm text-slate-400">{item.subtitle}</p>
+            </article>
           ))}
-        </div>
+        </section>
 
-        <div className="mt-4 grid gap-4 lg:grid-cols-[1.2fr_1fr_1fr]">
-          <section className="rounded-2xl border border-white/10 bg-[#0a1a32]/90 p-4">
-            <div className="mb-3 flex items-center justify-between">
-              <h2 className="font-display text-2xl tracking-wide">Featured Players</h2>
-              <a href="#" className="text-xs text-orange-300">View All</a>
+        <section className="mt-4 grid gap-4 lg:grid-cols-[1.2fr_1fr_1fr]">
+          <article className="rounded-3xl border border-white/10 bg-[#0b1831] p-5">
+            <div className="mb-4 flex items-center justify-between">
+              <h2 className="font-display text-3xl tracking-wide">Featured Players</h2>
+              <a href="#" className="text-sm text-orange-300">View all</a>
             </div>
             <div className="grid gap-3 sm:grid-cols-3">
-              {playerCards.map((player, index) => (
-                <article key={player.name} className="rounded-xl border border-white/10 bg-[#0b203f]/90 p-3">
-                  <div className="mb-2 h-24 rounded-lg bg-gradient-to-br from-orange-500/35 to-blue-500/20" />
-                  <p className="font-semibold">{index + 1}. {player.name}</p>
-                  <p className="text-xs text-slate-400">{player.sport}</p>
-                  <p className="mt-2 inline-block rounded-full border border-orange-500/30 px-2 py-1 text-[11px] text-orange-300">
-                    {player.rank}
+              {players.map((player, index) => (
+                <div key={player.name} className="rounded-2xl border border-white/10 bg-[#0d2141] p-3">
+                  <div className="mb-3 flex h-24 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500/30 via-orange-500/10 to-blue-500/20">
+                    <Users size={24} className="text-orange-200" />
+                  </div>
+                  <p className="font-semibold text-white">{index + 1}. {player.name}</p>
+                  <p className="text-xs text-slate-400">{player.title}</p>
+                  <p className="mt-2 inline-flex rounded-full border border-orange-400/30 px-2 py-1 text-[11px] text-orange-200">
+                    {player.stat}
                   </p>
-                </article>
+                </div>
               ))}
             </div>
-          </section>
+          </article>
 
-          <section className="rounded-2xl border border-white/10 bg-[#0a1a32]/90 p-4">
-            <div className="mb-3 flex items-center justify-between">
-              <h2 className="font-display text-2xl tracking-wide">Our Sports</h2>
-              <a href="#" className="text-xs text-orange-300">View All</a>
+          <article className="rounded-3xl border border-white/10 bg-[#0b1831] p-5">
+            <div className="mb-4 flex items-center justify-between">
+              <h2 className="font-display text-3xl tracking-wide">Upcoming</h2>
+              <Calendar size={18} className="text-orange-300" />
             </div>
-            <div className="grid gap-3">
-              {sportCards.map((sport) => (
-                <article key={sport.title} className="rounded-xl border border-white/10 bg-[#0b203f]/90 p-3">
-                  <div className="mb-2 h-20 rounded-lg bg-gradient-to-br from-amber-500/35 to-slate-700/40" />
-                  <p className="font-semibold">{sport.title}</p>
-                  <p className="text-xs text-slate-400">{sport.details}</p>
-                  <p className="mt-2 inline-block rounded-full border border-blue-400/30 px-2 py-1 text-[11px] text-blue-200">
-                    {sport.tag}
+            <div className="space-y-3">
+              {events.map((event) => (
+                <div key={event.name} className="rounded-2xl border border-white/10 bg-[#0d2141] p-3">
+                  <p className="font-semibold text-white">{event.name}</p>
+                  <p className="text-xs text-slate-400">{event.date}</p>
+                  <p className="mt-2 inline-flex rounded-full border border-blue-300/30 px-2 py-1 text-[11px] text-blue-200">
+                    {event.status}
                   </p>
-                </article>
+                </div>
               ))}
             </div>
-          </section>
+          </article>
 
-          <section className="rounded-2xl border border-white/10 bg-[#0a1a32]/90 p-4">
-            <div className="mb-3 flex items-center justify-between">
-              <h2 className="font-display text-2xl tracking-wide">Our Achievements</h2>
-              <a href="#" className="text-xs text-orange-300">View All</a>
+          <article className="rounded-3xl border border-white/10 bg-[#0b1831] p-5">
+            <h2 className="font-display text-3xl tracking-wide">Achievements</h2>
+            <div className="mt-4 grid grid-cols-2 gap-3 text-center">
+              <div className="rounded-2xl border border-white/10 bg-[#0d2141] p-4">
+                <Award className="mx-auto mb-1 text-orange-300" size={18} />
+                <p className="text-xl font-bold text-white">14+</p>
+                <p className="text-xs text-slate-400">Awards Won</p>
+              </div>
+              <div className="rounded-2xl border border-white/10 bg-[#0d2141] p-4">
+                <Users className="mx-auto mb-1 text-orange-300" size={18} />
+                <p className="text-xl font-bold text-white">125+</p>
+                <p className="text-xs text-slate-400">Registered Players</p>
+              </div>
+              <div className="rounded-2xl border border-white/10 bg-[#0d2141] p-4">
+                <Dumbbell className="mx-auto mb-1 text-orange-300" size={18} />
+                <p className="text-xl font-bold text-white">4</p>
+                <p className="text-xs text-slate-400">Sports Covered</p>
+              </div>
+              <div className="rounded-2xl border border-white/10 bg-[#0d2141] p-4">
+                <MapPin className="mx-auto mb-1 text-orange-300" size={18} />
+                <p className="text-xl font-bold text-white">5</p>
+                <p className="text-xs text-slate-400">States Reached</p>
+              </div>
             </div>
-            <div className="grid grid-cols-2 gap-3 text-center text-sm">
-              <div className="rounded-xl border border-white/10 bg-[#0b203f]/90 p-4"><p className="text-2xl font-bold text-orange-300">14+</p><p>Awards Won</p></div>
-              <div className="rounded-xl border border-white/10 bg-[#0b203f]/90 p-4"><p className="text-2xl font-bold text-orange-300">125+</p><p>Registered Players</p></div>
-              <div className="rounded-xl border border-white/10 bg-[#0b203f]/90 p-4"><p className="text-2xl font-bold text-orange-300">3</p><p>Sports Covered</p></div>
-              <div className="rounded-xl border border-white/10 bg-[#0b203f]/90 p-4"><p className="text-2xl font-bold text-orange-300">5</p><p>States Represented</p></div>
-            </div>
-          </section>
-        </div>
+          </article>
+        </section>
 
-        <footer className="mt-4 rounded-2xl border border-orange-500/20 bg-gradient-to-r from-[#0c1c35] via-[#101f3e] to-[#1c1308] p-5 md:flex md:items-center md:justify-between">
+        <section className="mt-5 rounded-3xl border border-orange-400/25 bg-gradient-to-r from-[#0d203e] via-[#132a53] to-[#291b0b] p-6 md:flex md:items-center md:justify-between">
           <div>
-            <p className="font-display text-4xl leading-none tracking-wide">Be a Part of Our Journey</p>
-            <p className="text-slate-400">Support young talent. Build champions.</p>
+            <p className="font-display text-5xl leading-none tracking-wide text-white">Be Part of Our Journey</p>
+            <p className="mt-2 text-slate-300">Support young talent, build champions, and shape future athletes.</p>
           </div>
           <div className="mt-4 flex flex-wrap gap-3 md:mt-0">
-            <button className="rounded-lg bg-gradient-to-r from-orange-500 to-amber-400 px-5 py-2.5 font-semibold text-slate-900">
-              Become a Sponsor
+            <button className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-300 px-5 py-2.5 font-semibold text-slate-900">
+              Become a Sponsor <ArrowRight size={16} />
             </button>
-            <button className="rounded-lg border border-white/20 bg-white/5 px-5 py-2.5 text-slate-100">
-              Contact Us
+            <button className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/5 px-5 py-2.5 text-slate-100">
+              Contact Us <Sparkles size={16} />
             </button>
           </div>
-        </footer>
-      </section>
+        </section>
+      </div>
     </main>
   );
 }
